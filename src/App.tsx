@@ -33,6 +33,15 @@ function App() {
         setFilter(nextFilterValue)
     }
 
+    let tasksForRender: Array<TasksType> = [];
+    if (filter=== "all") {
+        tasksForRender = tasks
+    } else if (filter === "active") {
+        tasksForRender = tasks.filter(task => task.isDone === false)
+    } else if (filter === "completed") {
+        tasksForRender = tasks.filter(task => task.isDone === true)
+    }
+
     // const tasks_2: Array<TasksType> = [
     //     {id: 4, title: "Beer", isDone: false},
     //     {id: 5, title: "Milk", isDone: true},
@@ -42,7 +51,7 @@ function App() {
     return (
         <div className="App">
             <TodoList
-                tasks={tasks}
+                tasks={tasksForRender}
                 title={todoListTitle}
                 removeTask={removeTask}
                 changeTodoListFilter={changeTodoListFilter}/>
