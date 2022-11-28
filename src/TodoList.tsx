@@ -9,6 +9,7 @@ type TodoListPropsType = {
     changeTodoListFilter: (nextFilterValue: FilterValuesType) => void
 }
 
+
 const TodoList = (props: TodoListPropsType) => {
     const [title, setTitle] = useState<string>('')
 
