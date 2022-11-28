@@ -35,12 +35,13 @@ function App() {
         }
         setTasks([newTask, ...tasks])
     }
+    const changeTaskStatus = (taskId: string, isDone: boolean) => {
+        setTasks(tasks.map(t => t.id === taskId ? {...t, isDone: isDone} : t))
+    }
 
     const changeTodoListFilter = (nextFilterValue: FilterValuesType) => {
         setFilter(nextFilterValue)
     }
-
-
     const getFilteredTasks = (tasks: Array<TasksType>, filer: FilterValuesType): Array<TasksType> => {
         switch (filer) {
             case 'completed':
@@ -51,33 +52,21 @@ function App() {
                 return tasks
         }
     }
-    // if (filter=== "all") {
-    //     return tasks
-    // } else if (filter === "active") {
-    //     filteredTasks = tasks.filter(task => task.isDone === false)
-    // } else if (filter === "completed") {
-    //     filteredTasks = tasks.filter(task => task.isDone === true)
-    // // }
-    // return tasks.filter(task => task.isDone === filter)
+    const filteredTasks: Array<TasksType> = getFilteredTasks(tasks, filter)
 
-// const tasks_2: Array<TasksType> = [
-//     {id: 4, title: "Beer", isDone: false},
-//     {id: 5, title: "Milk", isDone: true},
-//     {id: 6, title: "Cola", isDone: true},
-// ]
-const filteredTasks: Array<TasksType> = getFilteredTasks(tasks, filter)
-return (
-    <div className="App">
-        <TodoList
-            tasks={filteredTasks}
-            title={todoListTitle}
-            addTask={addTask}
-            removeTask={removeTask}
-            changeTodoListFilter={changeTodoListFilter}/>
+    return (
+        <div className="App">
+            <TodoList
+                tasks={filteredTasks}
+                title={todoListTitle}
+                filter={filter}
+                addTask={addTask}
+                removeTask={removeTask}
+                changeTaskStatus = {changeTaskStatus}
+                changeTodoListFilter={changeTodoListFilter}/>
 
-        {/*<TodoList tasks={tasks_2} title={todoListTitle_2}/>*/}
-    </div>
-);
+        </div>
+    );
 }
 
 export default App;
