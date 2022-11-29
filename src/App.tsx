@@ -52,6 +52,7 @@ function App() {
                 return tasks
         }
     }
+
     const filteredTasks: Array<TasksType> = getFilteredTasks(tasks, filter)
 
     return (
