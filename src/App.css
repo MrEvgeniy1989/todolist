@@ -1,24 +1,26 @@
+
 .App {
-    padding: 30px;
-    display: flex;
+  padding: 30px;
+  display: flex;
 }
 
 .App > div {
-    margin-right: 50px;
+  margin-right: 50px;
 }
 
-.btn-active {
-    background-color: darkslateblue;
-    color: white;
+.error {
+  border: red 1px solid;
 }
 
-.task-done {
-    font-weight: bold;
-    color: rebeccapurple;
-    opacity: 70%;
+.error-message {
+  color: red;
 }
 
-.input-error {
-    border: 2px solid red;
-    outline: none;
+.active-filter {
+  background-color: aquamarine;
 }
+
+.is-done {
+  opacity: 0.5;
+}
+
