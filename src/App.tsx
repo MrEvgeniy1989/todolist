@@ -132,8 +132,13 @@ function App() {
             <ButtonAppBar/>
             <Container fixed>
 
-                <Grid container style={{padding: "20px"}}>
-                    <AddItemForm addItem={addTodolist}/>
+                <Grid container spacing={3} style={{paddingBottom: '20px', paddingTop: '20px', width: "600px"}}>
+                    <Grid item>
+                        <Paper elevation={3} style={{padding: '10px'}}>
+                            <h3>Создание нового списка задач: </h3>
+                            <AddItemForm addItem={addTodolist}/>
+                        </Paper>
+                    </Grid>
                 </Grid>
 
                 <Grid container spacing={3}>
