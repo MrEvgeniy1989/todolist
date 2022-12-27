@@ -1,6 +1,8 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import {IconButton, TextField} from "@mui/material";
+import {AddBox} from "@mui/icons-material";
+
+
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void
@@ -8,15 +10,15 @@ type AddItemFormPropsType = {
 
 export function AddItemForm(props: AddItemFormPropsType) {
 
-    let [title, setTitle] = useState('')
+    let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null>(null)
 
     const addItem = () => {
-        if (title.trim() !== '') {
+        if (title.trim() !== "") {
             props.addItem(title);
-            setTitle('');
+            setTitle("");
         } else {
-            setError('Title is required');
+            setError("Title is required");
         }
     }
 
@@ -32,27 +34,16 @@ export function AddItemForm(props: AddItemFormPropsType) {
     }
 
     return <div>
-        {/*<input value={title}*/}
-        {/*       onChange={onChangeHandler}*/}
-        {/*       onKeyPress={onKeyPressHandler}*/}
-        {/*       className={error ? 'error' : ''}*/}
-        {/*/>*/}
-        <TextField
-            error={!!error}
-            size={'small'}
-            id="outlined-basic"
-            label={error ? 'Название обязательно!' : 'Введите название...'}
-            variant="outlined"
-            value={title}
-            onChange={onChangeHandler}
-            onKeyPress={onKeyPressHandler}
+        <TextField variant="outlined"
+                   error={!!error}
+                   value={title}
+                   onChange={onChangeHandler}
+                   onKeyPress={onKeyPressHandler}
+                   label="Title"
+                   helperText={error}
         />
-        <Button variant="contained"
-                size={'small'}
-                onClick={addItem}
-                style={{maxWidth: '38px', maxHeight: '38px', minWidth: '38px', minHeight: '38px'}}
-        >+</Button>
-
-        {/*{error && <div className="error-message">{error}</div>}*/}
+        <IconButton color="primary" onClick={addItem}>
+            <AddBox />
+        </IconButton>
     </div>
 }
