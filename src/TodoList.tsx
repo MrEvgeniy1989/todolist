@@ -3,9 +3,8 @@ import {FilterValuesType} from './App';
 import {AddItemForm} from './AddItemForm';
 import {EditableSpan} from './EditableSpan';
 import IconButton from '@mui/material/IconButton/IconButton';
-import {Delete} from '@mui/icons-material';
-import {Button, Checkbox} from '@mui/material';
-import {SuperCheckbox} from './components/SuperCheckbox';
+import {Delete} from "@mui/icons-material";
+import {Button, Checkbox} from "@mui/material";
 
 
 export type TaskType = {
@@ -40,18 +39,14 @@ export function Todolist(props: PropsType) {
         props.changeTodolistTitle(props.id, title);
     }
 
-    const onAllClickHandler = () => props.changeFilter('all', props.id);
-    const onActiveClickHandler = () => props.changeFilter('active', props.id);
-    const onCompletedClickHandler = () => props.changeFilter('completed', props.id);
-
-    const changeStatusHandler = (tId: string, eventValue: boolean) => {
-        props.changeTaskStatus(tId, eventValue, props.id)
-    }
+    const onAllClickHandler = () => props.changeFilter("all", props.id);
+    const onActiveClickHandler = () => props.changeFilter("active", props.id);
+    const onCompletedClickHandler = () => props.changeFilter("completed", props.id);
 
     return <div>
-        <h3><EditableSpan value={props.title} onChange={changeTodolistTitle}/>
+        <h3> <EditableSpan value={props.title} onChange={changeTodolistTitle} />
             <IconButton onClick={removeTodolist}>
-                <Delete/>
+                <Delete />
             </IconButton>
         </h3>
         <AddItemForm addItem={addTask}/>
@@ -67,22 +62,17 @@ export function Todolist(props: PropsType) {
                         props.changeTaskTitle(t.id, newValue, props.id);
                     }
 
-                    // const changeStatusHandler = (eventValue: boolean) => {
-                    //     props.changeTaskStatus(t.id, eventValue, props.id)
-                    // }
 
-                    return <div key={t.id} className={t.isDone ? 'is-done' : ''}>
-                        {/*<Checkbox*/}
-                        {/*    checked={t.isDone}*/}
-                        {/*    color="primary"*/}
-                        {/*    onChange={onChangeHandler}*/}
-                        {/*/>*/}
+                    return <div key={t.id} className={t.isDone ? "is-done" : ""}>
+                        <Checkbox
+                            checked={t.isDone}
+                            color="primary"
+                            onChange={onChangeHandler}
+                        />
 
-                        <SuperCheckbox checked={t.isDone} callback={(eventValue:boolean)=>changeStatusHandler(t.id,eventValue)}/>
-
-                        <EditableSpan value={t.title} onChange={onTitleChangeHandler}/>
+                        <EditableSpan value={t.title} onChange={onTitleChangeHandler} />
                         <IconButton onClick={onClickHandler}>
-                            <Delete/>
+                            <Delete />
                         </IconButton>
                     </div>
                 })
