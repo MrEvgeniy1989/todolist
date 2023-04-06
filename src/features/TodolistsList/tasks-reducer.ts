@@ -4,6 +4,7 @@ import {handleServerAppError, handleServerNetworkError} from 'utils/error-utils'
 import {appActions} from "app/app-reducer";
 import {todolistsActions} from "features/TodolistsList/todolists-reducer";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {clearTasksAndTodolists} from "../../common/common.actions";
 
 const initialState: TasksStateType = {}
 export type UpdateDomainTaskModelType = {
@@ -58,8 +59,8 @@ const slice = createSlice({
                     state[tl.id] = []
                 })
             })
-            .addCase(todolistsActions.clearTodolistsData, (state, action) => {
-                return state = {}
+            .addCase(clearTasksAndTodolists, () => {
+                return {}
             })
     }
 })
