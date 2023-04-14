@@ -40,7 +40,7 @@ export const AddItemForm = React.memo(function ({addItem, disabled = false}: Add
 							 error={!!error}
 							 value={title}
 							 onChange={onChangeHandler}
-							 onKeyDown={onKeyPressHandler}
+							 onKeyPress={onKeyPressHandler}
 							 label="Title"
 							 helperText={error}
 		/>
