@@ -19,4 +19,3 @@ type BoundActions<Actions extends ActionCreatorsMapObject> = {
 type BoundAsyncThunk<Action extends ActionCreator<any>> = (
 	...args: Parameters<Action>
 ) => ReturnType<ReturnType<Action>>;
-

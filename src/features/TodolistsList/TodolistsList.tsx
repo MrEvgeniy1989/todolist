@@ -26,10 +26,8 @@ export const TodolistsList = () => {
 	} = useActions(todolistsThunks)
 
 
-	const {addTask: addTaskThunk, removeTask: removeTaskThunk, updateTask, changeTodolistFilter} = useActions({...tasksThunks, ...todolistsActions})
-
-	// const {addTask: addTaskThunk, removeTask: removeTaskThunk, updateTask} = useActions(tasksThunks)
-	// const {changeTodolistFilter} = useActions(todolistsActions)
+	const {addTask: addTaskThunk, removeTask: removeTaskThunk, updateTask} = useActions(tasksThunks)
+	const {changeTodolistFilter} = useActions(todolistsActions)
 
 	useEffect(() => {
 		if (!isLoggedIn) {
